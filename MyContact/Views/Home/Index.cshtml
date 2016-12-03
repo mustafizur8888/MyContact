@@ -47,7 +47,11 @@
                         </td>
 
                         <td>
-                            @Html.ActionLink("Edit", "Edit", new { id = contact.ContactId })
+                            <a href="@Url.Action("Edit", new { id = contact.ContactId })">
+                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+
+                            </a>
+
                         </td>
                     </tr>
                 }
