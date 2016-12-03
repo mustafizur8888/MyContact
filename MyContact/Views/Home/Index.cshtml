@@ -1,8 +1,60 @@
-﻿@{
+﻿@*@model IEnumerable<MyContact.Models.Contact>*@
+@model IEnumerable<MyContact.ViewModel.ContactViewModel>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 @Html.Partial("_sidebar")
-<div class="col-lg-9"></div>
+<div class="col-lg-9">
 
+    @if (!Model.Any())
+    {
+        <h2>No Record Found</h2>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <tr>
+                <th style="width: 1%"></th>
+                <th>
+                    Name
+                </th>
+                <th></th>
+
+            </tr>
+            @{ string fistAlphabe = string.Empty; }
+            @foreach (var model in Model)
+            {
+
+                foreach (var contact in model.Contacts)
+                {
+
+                    <tr>
+                        <td>
+                            @if (model.FirstAlphabet != fistAlphabe)
+                            {
+                                fistAlphabe = model.FirstAlphabet;
+                                @fistAlphabe;
+                            }
+                           
+                        </td>
+                        <td>
+                            @Html.ActionLink(@contact.Name, "Details", "Home", new { id = contact.ContactId }, null)
+
+                        </td>
+
+                        <td></td>
+                    </tr>
+                }
+
+            }
+
+        </table>
+                }
+
+
+
+
+</div>
 </div>

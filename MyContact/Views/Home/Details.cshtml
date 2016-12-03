@@ -1,0 +1,41 @@
+﻿@model MyContact.Models.Contact
+@{
+    ViewBag.Title = "Ddetails";
+}
+
+<div class="row">
+    &nbsp;
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="thumbnail">
+            <img src="http://placehold.it/400x200" alt="..." class="img-rounded" />
+        </div>
+    </div>
+    <div class="col-md-9">
+        <blockquote>
+
+            <a href="@Url.Action("MakeFavourite", new { id = Model.ContactId })" title="Favourite">
+            @if (Model.Favourite != null && Model.Favourite.Value)
+            {
+                        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+
+            }
+            else
+            {
+                        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+
+            }
+
+            </a>
+
+
+            <p><b>Name:</b> @Model.Name</p>
+            <p><b>Phone:</b> @Model.PhoneNumber</p>
+            <p><b>Email:</b> @Model.Email</p>
+            <p><b>Address:</b> @Model.Address</p>
+            <p><b>Dath Of Birth:</b> @Model.Birthday.Value.Date.ToString("yyyy-MM-dd")</p>
+        </blockquote>
+    </div>
+
+</div>
