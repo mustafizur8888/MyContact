@@ -133,5 +133,41 @@ namespace MyContact.Controllers
             }).ToList();
             return View("Index", contactViewModels);
         }
+
+       [HttpGet]
+        public ActionResult Edit(int id)
+        {
+
+            var contact = _db.Contacts.SingleOrDefault(x => x.ContactId == id);
+            if (contact==null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+
+
+            return View("Create",contact);
+        }
+        [HttpPost]
+
+        public ActionResult Edit(Contact contact)
+        {
+
+            var dbContact = _db.Contacts.SingleOrDefault(x => x.ContactId == contact.ContactId);
+            if (dbContact == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.NotFound);
+            }
+            dbContact.Name = contact.Name;
+            dbContact.Address = contact.Address;
+            dbContact.Birthday = contact.Birthday;
+            dbContact.Email = contact.Email;
+            dbContact.Favourite = contact.Favourite;
+            dbContact.PhoneNumber = contact.PhoneNumber;
+            _db.SaveChanges();
+
+
+
+            return RedirectToAction("Index");
+        }
     }
 }

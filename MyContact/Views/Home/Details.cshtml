@@ -16,16 +16,16 @@
         <blockquote>
 
             <a href="@Url.Action("MakeFavourite", new { id = Model.ContactId })" title="Favourite">
-            @if (Model.Favourite != null && Model.Favourite.Value)
+                @if (Model.Favourite != null && Model.Favourite.Value)
             {
-                        <i class="fa fa-star fa-2x" aria-hidden="true"></i>
+                    <i class="fa fa-star fa-2x" aria-hidden="true"></i>
 
-            }
-            else
-            {
-                        <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
+                }
+                else
+                {
+                    <i class="fa fa-star-o fa-2x" aria-hidden="true"></i>
 
-            }
+                }
 
             </a>
 
@@ -34,7 +34,11 @@
             <p><b>Phone:</b> @Model.PhoneNumber</p>
             <p><b>Email:</b> @Model.Email</p>
             <p><b>Address:</b> @Model.Address</p>
-            <p><b>Dath Of Birth:</b> @Model.Birthday.Value.Date.ToString("yyyy-MM-dd")</p>
+            <p>
+                <b>Dath Of Birth:</b> @{
+                    var dob = Model.Birthday?.Date.ToString("yyyy-MM-dd") ?? "";
+                }
+            </p>
         </blockquote>
     </div>
 
