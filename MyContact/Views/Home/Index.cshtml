@@ -35,9 +35,11 @@
                             @if (model.FirstAlphabet != fistAlphabe)
                             {
                                 fistAlphabe = model.FirstAlphabet;
-                                @fistAlphabe;
+                                <b>
+                                    @fistAlphabe
+                                </b>
                             }
-                           
+
                         </td>
                         <td>
                             @Html.ActionLink(@contact.Name, "Details", "Home", new { id = contact.ContactId }, null)
